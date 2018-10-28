@@ -11,16 +11,6 @@ import { Tecnologia } from '../../domain/test2_db/tecnologia';
 
 // START - USED SERVICES
 /**
-* RisorsaService.create
-*	@description CRUD ACTION create
-*
-* RisorsaService.get
-*	@description CRUD ACTION get
-*	@param ObjectId id Id 
-*
-* TecnologiaService.list
-*	@description CRUD ACTION list
-*
 * RisorsaService.update
 *	@description CRUD ACTION update
 *	@param ObjectId id Id

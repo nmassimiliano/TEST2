@@ -41,6 +41,7 @@ public class TecnologiaBaseDto {
 	private Long _id;
 	
 	// Attributes
+    private String descrizione;
 	
 	private List<RisorsaInfo> Risorsas = new ArrayList<>();
 	
@@ -53,6 +54,13 @@ public class TecnologiaBaseDto {
 		this._id = id;
 	}
 	
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
     
 
     

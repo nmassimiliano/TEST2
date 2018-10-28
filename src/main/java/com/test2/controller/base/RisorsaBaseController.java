@@ -23,6 +23,8 @@ import com.test2.db.test2_db.entity.Tecnologia;
 
 //IMPORT RELATIONS
 
+import com.test2.db.test2_db.service.FornitoreService;
+
 import com.test2.db.test2_db.service.TecnologiaService;
 
 
@@ -31,6 +33,9 @@ public class RisorsaBaseController {
     @Autowired
 	RisorsaService risorsaService;
 
+	
+	@Autowired
+	FornitoreService fornitoreService;
 	
 	@Autowired
 	TecnologiaService tecnologiaService;
@@ -49,6 +54,10 @@ public class RisorsaBaseController {
 	@PostMapping("/risorsas")
 	public ResponseEntity<RisorsaDto> insert(@RequestBody Risorsa obj) {
 				
+		//external relation Fornitore
+		if (obj.getFornitore() != null && !obj.getFornitore().isEmpty())
+			obj.getFornitore().forEach(fornitore -> fornitoreService.insert(fornitore));
+		
 		//external relation tecnologie
 		if (obj.getTecnologie() != null && !obj.getTecnologie().isEmpty()) {
 			obj.getTecnologie().forEach(tecnologia -> {
@@ -68,6 +77,11 @@ public class RisorsaBaseController {
 	@DeleteMapping("/risorsas/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
 		Risorsa risorsaSelected = risorsaService.getOne(id);
+		
+		//external relation Fornitore
+		if (risorsaSelected.getFornitore() != null && !risorsaSelected.getFornitore().isEmpty()) {
+			risorsaSelected.getFornitore().forEach(fornitore -> fornitoreService.delete(fornitore.get_id()));
+		}
 		
 		//external relation tecnologie
 		if (risorsaSelected.getTecnologie() != null) {
@@ -124,6 +138,10 @@ public class RisorsaBaseController {
 	@PostMapping("/risorsas/{id}")
 	public ResponseEntity<RisorsaDto> update(@RequestBody Risorsa obj, @PathVariable("id") Long id) {
 	    
+		//external relation Fornitore
+		if (obj.getFornitore() != null)
+			obj.getFornitore().forEach(fornitore -> fornitoreService.insert(fornitore));
+		
 		//external relation tecnologie
 		if (obj.getTecnologie() != null) {
 			obj.getTecnologie().forEach(tecnologia -> {

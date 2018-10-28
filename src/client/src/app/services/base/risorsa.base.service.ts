@@ -40,6 +40,10 @@ import { Risorsa } from '../../domain/test2_db/risorsa';
 		},
 		//RELATIONS
 		//EXTERNAL RELATIONS
+		risorse: {
+			type: Schema.ObjectId,
+			ref : "Fornitore"
+		},
 		tecnologie: [{
 			type: Schema.ObjectId,
 			ref : "Risorsa"

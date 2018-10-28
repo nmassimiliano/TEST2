@@ -54,6 +54,8 @@ public class TecnologiaBase {
 	private Long _id;
 	
 	// Attributes
+	@Column()
+    private String descrizione;
 	
 	@ManyToMany(mappedBy="tecnologie")
 	private List<Risorsa> Risorsas = new ArrayList<>();
@@ -67,6 +69,13 @@ public class TecnologiaBase {
 		this._id = id;
 	}
 	
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
     
 
     

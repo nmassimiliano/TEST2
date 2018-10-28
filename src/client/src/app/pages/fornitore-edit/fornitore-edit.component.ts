@@ -3,15 +3,22 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 // Import Services
-import { TecnologiaService } from '../../services/tecnologia.service';
+import { FornitoreService } from '../../services/fornitore.service';
 import { RisorsaService } from '../../services/risorsa.service';
 // Import Models
-import { Tecnologia } from '../../domain/test2_db/tecnologia';
+import { Fornitore } from '../../domain/test2_db/fornitore';
 import { Risorsa } from '../../domain/test2_db/risorsa';
 
 // START - USED SERVICES
 /**
-* TecnologiaService.update
+* FornitoreService.get
+*	@description CRUD ACTION get
+*	@param ObjectId id Id 
+*
+* RisorsaService.list
+*	@description CRUD ACTION list
+*
+* FornitoreService.update
 *	@description CRUD ACTION update
 *	@param ObjectId id Id
 *
@@ -19,28 +26,26 @@ import { Risorsa } from '../../domain/test2_db/risorsa';
 // END - USED SERVICES
 
 /**
- * This component allows to edit a Tecnologia
+ * This component allows to edit a Fornitore
  */
 @Component({
-    selector: 'app-tecnologia-edit',
-    templateUrl: 'tecnologia-edit.component.html',
-    styleUrls: ['tecnologia-edit.component.css']
+    selector: 'app-fornitore-edit',
+    templateUrl: 'fornitore-edit.component.html',
+    styleUrls: ['fornitore-edit.component.css']
 })
-export class TecnologiaEditComponent implements OnInit {
-    item: Tecnologia;
-    listTecnologie: Tecnologia[];
-    externalRisorsa: Risorsa[];
-    model: Tecnologia;
+export class FornitoreEditComponent implements OnInit {
+    item: Fornitore;
+    listRisorse: Risorsa[];
+    model: Fornitore;
     formValid: Boolean;
 
     constructor(
-    private tecnologiaService: TecnologiaService,
+    private fornitoreService: FornitoreService,
     private risorsaService: RisorsaService,
     private route: ActivatedRoute,
     private location: Location) {
         // Init item
-        this.item = new Tecnologia();
-        this.externalRisorsa = [];
+        this.item = new Fornitore();
     }
 
     /**
@@ -50,27 +55,27 @@ export class TecnologiaEditComponent implements OnInit {
         this.route.params.subscribe(param => {
             const id: string = param['id'];
             if (id !== 'new') {
-                this.tecnologiaService.get(id).subscribe(item => this.item = item);
-                this.risorsaService.findByTecnologie(id).subscribe(list => this.externalRisorsa = list);
+                this.fornitoreService.get(id).subscribe(item => this.item = item);
             }
             // Get relations
+            this.risorsaService.list().subscribe(list => this.listRisorse = list);
         });
     }
 
 
     /**
-     * Save Tecnologia
+     * Save Fornitore
      *
      * @param {boolean} formValid Form validity check
-     * @param Tecnologia item Tecnologia to save
+     * @param Fornitore item Fornitore to save
      */
-    save(formValid: boolean, item: Tecnologia): void {
+    save(formValid: boolean, item: Fornitore): void {
         this.formValid = formValid;
         if (formValid) {
             if (item._id) {
-                this.tecnologiaService.update(item).subscribe(data => this.goBack());
+                this.fornitoreService.update(item).subscribe(data => this.goBack());
             } else {
-                this.tecnologiaService.create(item).subscribe(data => this.goBack());
+                this.fornitoreService.create(item).subscribe(data => this.goBack());
             } 
         }
     }

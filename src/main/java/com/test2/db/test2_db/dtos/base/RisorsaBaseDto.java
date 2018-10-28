@@ -32,6 +32,9 @@ import java.util.stream.Collectors;
 
 import com.test2.db.test2_db.entity.Risorsa;
 // Import relations
+import com.test2.db.test2_db.dtos.infos.FornitoreInfo;
+
+
 
 import com.test2.db.test2_db.dtos.infos.TecnologiaInfo;
 
@@ -42,6 +45,9 @@ public class RisorsaBaseDto {
 	
 	// Attributes
     private String nominativo;
+	
+	// Relations Fornitore
+	private List<Long> risorse_Fornitore = new ArrayList<>();
 	
 	
 	// Relations m:m tecnologie
@@ -64,6 +70,19 @@ public class RisorsaBaseDto {
 		this.nominativo = nominativo;
 	}
     
+	// Relations Fornitore
+	
+	public List<Long> getrisorse_Fornitore() {
+		return this.risorse_Fornitore;
+	}
+
+    public void setrisorse_Fornitore(List<FornitoreInfo> list) {
+		this.risorse_Fornitore = list.stream()
+				.map(el -> el.get_id())
+				.collect(Collectors.toList());
+	}
+
+	
 
     
 	

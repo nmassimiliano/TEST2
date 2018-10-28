@@ -7,9 +7,16 @@ import { Tecnologia } from '../../domain/test2_db/tecnologia';
 
 // START - USED SERVICES
 /**
+* TecnologiaService.create
+*	@description CRUD ACTION create
+*
 * TecnologiaService.delete
 *	@description CRUD ACTION delete
 *	@param ObjectId id Id
+*
+* TecnologiaService.get
+*	@description CRUD ACTION get
+*	@param ObjectId id Id 
 *
 * TecnologiaService.list
 *	@description CRUD ACTION list
