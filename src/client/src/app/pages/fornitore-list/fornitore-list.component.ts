@@ -10,10 +10,6 @@ import { Fornitore } from '../../domain/test2_db/fornitore';
 * FornitoreService.create
 *	@description CRUD ACTION create
 *
-* FornitoreService.delete
-*	@description CRUD ACTION delete
-*	@param ObjectId id Id
-*
 * FornitoreService.list
 *	@description CRUD ACTION list
 *

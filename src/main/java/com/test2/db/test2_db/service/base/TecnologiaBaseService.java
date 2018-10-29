@@ -41,14 +41,5 @@ public class TecnologiaBaseService {
 		return tecnologiaRepository.findOne(id);
 	}
 
-    	
-    //CRUD - GET LIST
-    	
-	public List<Tecnologia> getAll() {
-		List<Tecnologia> list = new ArrayList<>();
-		tecnologiaRepository.findAll().forEach(list::add);
-		return list;
-	}
-	
 
 }

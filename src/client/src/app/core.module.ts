@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 /* START MY SERVICES IMPORTS*/
 // Do not edit this comment content, it will be overwritten in next Skaffolder generation
+import { AllocazioneService } from './services/allocazione.service';
+import { DemandService } from './services/demand.service';
 import { FornitoreService } from './services/fornitore.service';
 import { RisorsaService } from './services/risorsa.service';
 import { TecnologiaService } from './services/tecnologia.service';
@@ -18,6 +20,8 @@ import { AuthInterceptor } from './security/auth.interceptor';
   providers: [
     /* START PROVIDERS */
 // Do not edit this comment content, it will be overwritten in next Skaffolder generation
+    AllocazioneService,
+    DemandService,
     FornitoreService,
     RisorsaService,
     TecnologiaService,

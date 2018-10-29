@@ -7,13 +7,6 @@ import { Risorsa } from '../../domain/test2_db/risorsa';
 
 // START - USED SERVICES
 /**
-* RisorsaService.create
-*	@description CRUD ACTION create
-*
-* RisorsaService.delete
-*	@description CRUD ACTION delete
-*	@param ObjectId id Id
-*
 * RisorsaService.findBytecnologie
 *	@description CRUD ACTION findBytecnologie
 *	@param Objectid key Id della risorsa tecnologie da cercare

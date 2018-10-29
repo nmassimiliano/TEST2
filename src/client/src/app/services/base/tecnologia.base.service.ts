@@ -93,17 +93,6 @@ export class TecnologiaBaseService {
     }
 
     /**
-    * TecnologiaService.list
-    *   @description CRUD ACTION list
-    *
-    */
-    list(): Observable<Tecnologia[]> {
-        return this.http
-            .get<Tecnologia[]>(this.contextUrl)
-            .pipe(map(data => data));
-    }
-
-    /**
     * TecnologiaService.update
     *   @description CRUD ACTION update
     *   @param ObjectId id Id

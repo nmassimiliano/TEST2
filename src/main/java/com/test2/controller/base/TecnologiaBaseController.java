@@ -87,18 +87,6 @@ public class TecnologiaBaseController {
 		return ResponseEntity.ok().body(convertToDto(tecnologiaSelected));
 	}
 	
-	
-    //CRUD - GET LIST
-    @Secured({ "ROLE_PRIVATE_USER" })
-	@GetMapping("/tecnologias")
-	public ResponseEntity<List<TecnologiaDto>> getList() {
-		List<Tecnologia> list = tecnologiaService.getAll();
-		List<TecnologiaDto> listDto = list.stream()
-				.map(tecnologia -> convertToDto(tecnologia))
-				.collect(Collectors.toList());
-		return ResponseEntity.ok().body(listDto);
-	}
-
 
     //CRUD - EDIT
     @Secured({ "ROLE_PRIVATE_USER" })

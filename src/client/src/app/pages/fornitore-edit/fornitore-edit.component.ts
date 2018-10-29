@@ -11,6 +11,13 @@ import { Risorsa } from '../../domain/test2_db/risorsa';
 
 // START - USED SERVICES
 /**
+* FornitoreService.create
+*	@description CRUD ACTION create
+*
+* FornitoreService.delete
+*	@description CRUD ACTION delete
+*	@param ObjectId id Id
+*
 * FornitoreService.get
 *	@description CRUD ACTION get
 *	@param ObjectId id Id 
